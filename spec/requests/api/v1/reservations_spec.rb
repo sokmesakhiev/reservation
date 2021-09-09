@@ -4,7 +4,40 @@ describe "/api/v1/reservations" do
   context "Airbnb" do
     describe "POST create" do
       it "creates reservation successfully" do
-        params = {
+        post(
+          api_v1_reservations_path(build_params)
+        )
+
+        expect(response.status).to eq(200)
+      end
+
+      it "handles invalid payload" do
+        invalid_params = { "foo": "bar" }
+
+        post(
+          api_v1_reservations_path(invalid_params)
+        )
+
+        expect(response.status).to eq(422)
+      end
+
+      it "handles create with existing reservation" do
+        create(:reservation, code: '1111')
+
+        post(
+          api_v1_reservations_path(build_params("reservation_code": "1111"))
+        )
+
+        expect(response.status).to eq(422)
+        expect(json_response).to eq({
+          "error"=>{
+            "reservation_code"=>["has already been taken"]
+          }
+        })
+      end
+
+      def build_params(params = {})
+        {
           "reservation_code": "YYY12345678",
           "start_date": "2021-04-14",
           "end_date": "2021-04-18",
@@ -24,13 +57,7 @@ describe "/api/v1/reservations" do
           "payout_price": "4200.00",
           "security_price": "500",
           "total_price": "4700.00"
-        }
-
-        post(
-          api_v1_reservations_path(params)
-        )
-
-        expect(response.status).to eq(200)
+        }.merge(params)
       end
     end
   end
@@ -38,7 +65,30 @@ describe "/api/v1/reservations" do
   context "Booking.com" do
     describe "POST create" do
       it "returns a search result" do
-        params = {
+        post(
+          api_v1_reservations_path(build_params)
+        )
+
+        expect(response.status).to eq(200)
+      end
+
+      it "handles create with existing reservation" do
+        create(:reservation, code: '1111')
+
+        post(
+          api_v1_reservations_path(build_params("reservation": { "code": "1111" }))
+        )
+
+        expect(response.status).to eq(422)
+        expect(json_response).to eq({
+          "error"=>{
+            "code"=>["has already been taken"]
+          }
+        })
+      end
+
+      def build_params(params={})
+        {
           "reservation": {
             "code": "XXX12345678",
             "start_date": "2021-03-12",
@@ -64,9 +114,7 @@ describe "/api/v1/reservations" do
             "status_type": "accepted",
             "total_paid_amount_accurate": "4300.00"
           }
-        }
-
-
+        }.deep_merge(params)
       end
     end
   end

@@ -1,19 +1,19 @@
-class CreateReservation < ApplicationService
-  def call
-    data = parser.new(attributes)
+class PayloadParser
+  attr_reader :attributes
 
-    Reservation.transaction do
-      guest = Guest.create_or_find_by(data.guest_params)
-
-      Reservation.create!(guest: guest, **data.reservation_params)
-    end
+  def initialize(attributes)
+    @attributes = attributes
   end
 
-  private
+  def parse
+    adapter.new(attributes)
+  end
 
-  def parser
+  def adapter
     return Payloads::Airbnb if is_airbnb?
     return Payloads::BookingDotCom if is_booking_dot_com?
+
+    Payloads::Error
   end
 
   def is_airbnb?

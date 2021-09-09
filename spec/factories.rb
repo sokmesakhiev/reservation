@@ -6,7 +6,7 @@ FactoryBot.define do
   factory :guest do
     email
     first_name { Faker::Name.first_name }
-    first_name { Faker::Name.last_name }
+    last_name { Faker::Name.last_name }
     phone { ["0123456789"] }
   end
 
@@ -24,5 +24,6 @@ FactoryBot.define do
     number_of_adults { 2 }
     number_of_children { 2 }
     number_of_infants { 0 }
+    number_of_guests { 4 }
   end
 end

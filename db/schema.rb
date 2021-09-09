@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_022930) do
+ActiveRecord::Schema.define(version: 2021_09_09_081837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "guests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "phone", default: [], null: false, array: true
+    t.string "last_name"
+    t.string "phone", null: false, array: true
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_022930) do
     t.integer "number_of_adults", null: false
     t.integer "number_of_children", null: false
     t.integer "number_of_infants", null: false
+    t.integer "number_of_guests", null: false
     t.integer "security_price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

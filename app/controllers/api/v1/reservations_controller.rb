@@ -1,13 +1,25 @@
 module Api
   module V1
-    class ReservationsController < ActionController::API
+    class ReservationsController < BaseController
       def create
-        reservation = CreateReservation.call(params)
-        if reservation.success
+        parser = PayloadParser.new(params).parse
 
+        if parser.valid?
+          reservation = ReservationCreator.call(
+            reservation_data: parser.reservation_data,
+            guest_data: parser.guest_data
+          )
+
+          render_serialized_payload reservation
         else
-
+          render_error_payload(parser.errors)
         end
+      end
+
+      private
+
+      def resource_serializer
+        ReservationSerializer
       end
     end
   end

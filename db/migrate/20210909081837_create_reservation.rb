@@ -13,6 +13,7 @@ class CreateReservation < ActiveRecord::Migration[6.1]
       t.integer :number_of_adults, null: false
       t.integer :number_of_children, null: false
       t.integer :number_of_infants, null: false
+      t.integer :number_of_guests, null: false
       t.integer :security_price, null: false
 
       t.timestamps

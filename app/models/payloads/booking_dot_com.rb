@@ -49,6 +49,10 @@ module Payloads
       data
     end
 
+    def mapped_column
+      MAPPED_COLUMN
+    end
+
     private
 
     def reservation_attribute
@@ -57,10 +61,6 @@ module Payloads
 
     def guest_details
       reservation_attribute["guest_details"]
-    end
-
-    def mapped_column
-      MAPPED_COLUMN
     end
   end
 end

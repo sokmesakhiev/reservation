@@ -49,14 +49,14 @@ module Payloads
       data
     end
 
+    def mapped_column
+      MAPPED_COLUMN
+    end
+
     private
 
     def guest_attribute
       attributes["guest"]
-    end
-
-    def mapped_column
-      MAPPED_COLUMN
     end
   end
 end

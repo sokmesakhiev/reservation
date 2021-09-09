@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe CreateReservation do
+RSpec.describe PayloadParser do
   it "creates reservation and guest" do
 
   end

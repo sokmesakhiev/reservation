@@ -3,8 +3,9 @@ module Api
     class ReservationsController < BaseController
       def create
         parser = PayloadParser.new(params).parse
+        validator = ReservationPayloadValidator.new(parser)
 
-        if parser.valid?
+        if validator.valid?
           reservation = ReservationCreator.call(
             reservation_data: parser.reservation_data,
             guest_data: parser.guest_data
@@ -12,7 +13,7 @@ module Api
 
           render_serialized_payload reservation
         else
-          render_error_payload(parser.errors)
+          render_error_payload(validator.errors)
         end
       end
 

@@ -10,7 +10,7 @@ class ReservationPayloadValidator
   end
 
   def errors
-    return nil if valid?
+    return {} if valid?
 
     build_error
   end
@@ -18,8 +18,9 @@ class ReservationPayloadValidator
   def build_error
     errors = {}
 
+    reservation.valid?
     guest.errors.messages.merge(reservation.errors.messages).each do |key, value|
-      errors[parser.mapped_column.fetch(key, key)] = value
+      errors[parser.mapped_column.fetch(key, key)] = value.to_a
     end
 
     errors

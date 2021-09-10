@@ -1,10 +1,4 @@
-class PayloadParser
-  attr_reader :attributes
-
-  def initialize(attributes)
-    @attributes = attributes
-  end
-
+class ReservationPayloadParser < BaseParser
   def parse
     adapter.new(attributes)
   end
@@ -17,10 +11,10 @@ class PayloadParser
   end
 
   def is_airbnb?
-    attributes.key?(:reservation_code)
+    attributes.key?("reservation_code")
   end
 
   def is_booking_dot_com?
-    attributes.key?(:reservation) && attributes[:reservation][:code].present?
+    attributes.key?("reservation") && attributes["reservation"]["code"].present?
   end
 end

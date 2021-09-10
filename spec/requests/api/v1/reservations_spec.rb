@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe "/api/v1/reservations" do
   context "Airbnb" do
-    describe "POST create" do
-      it "creates reservation successfully" do
+    describe "POST Create" do
+      it "creates a new reservation successfully" do
         post(
-          api_v1_reservations_path(build_params)
+          api_v1_reservation_path(build_params)
         )
 
         expect(response.status).to eq(200)
@@ -15,7 +15,7 @@ describe "/api/v1/reservations" do
         invalid_params = { "foo": "bar" }
 
         post(
-          api_v1_reservations_path(invalid_params)
+          api_v1_reservation_path(invalid_params)
         )
 
         expect(response.status).to eq(422)
@@ -25,7 +25,7 @@ describe "/api/v1/reservations" do
         create(:reservation, code: '1111')
 
         post(
-          api_v1_reservations_path(build_params("reservation_code": "1111"))
+          api_v1_reservation_path(build_params("reservation_code": "1111"))
         )
 
         expect(response.status).to eq(422)
@@ -60,29 +60,84 @@ describe "/api/v1/reservations" do
         }.merge(params)
       end
     end
+
+    describe "PUT Update" do
+      it "updates reservation successfully" do
+        reservation = create(
+          :reservation,
+          code: '1111',
+          status: "Accepted",
+          start_date: "2021-03-12",
+          end_date: "2021-03-16",
+          number_of_guests: 7
+        )
+
+        params = {
+          "reservation_code": "1111",
+          "start_date": "2021-03-14",
+          "end_date": "2021-03-15",
+          "status": "Rejected",
+          "guests": 4
+        }
+
+        put(
+          api_v1_reservation_path(params)
+        )
+
+        expect(response.status).to eq(200)
+        expect(json_response["data"]["attributes"]["code"]).to eq("1111")
+        expect(json_response["data"]["attributes"]["start_date"]).to eq("2021-03-14")
+        expect(json_response["data"]["attributes"]["end_date"]).to eq("2021-03-15")
+        expect(json_response["data"]["attributes"]["status"]).to eq("Rejected")
+        expect(json_response["data"]["attributes"]["number_of_guests"]).to eq(4)
+      end
+
+      it "raise 404 when update wrong reservation code" do
+        reservation = create(
+          :reservation,
+          code: '1111',
+          status: "Accepted",
+          start_date: "2021-03-12",
+          end_date: "2021-03-16",
+          number_of_guests: 7
+        )
+
+        params = {
+          "reservation_code": "2222",
+          "start_date": "2021-03-14",
+          "end_date": "2021-03-15",
+          "status": "Rejected",
+          "guests": 4
+        }
+
+        put(
+          api_v1_reservation_path(params)
+        )
+
+        expect(response.status).to eq(404)
+      end
+    end
   end
 
   context "Booking.com" do
-    describe "POST create" do
-      it "returns a search result" do
+    describe "POST Create" do
+      it "creates a new reservation successfully" do
         post(
-          api_v1_reservations_path(build_params)
+          api_v1_reservation_path(build_params)
         )
 
         expect(response.status).to eq(200)
       end
 
-      it "handles create with existing reservation" do
-        create(:reservation, code: '1111')
-
+      it "handles create with invalid data" do
         post(
-          api_v1_reservations_path(build_params("reservation": { "code": "1111" }))
+          api_v1_reservation_path(build_params("reservation": { "nights": 0 }))
         )
 
         expect(response.status).to eq(422)
         expect(json_response).to eq({
           "error"=>{
-            "code"=>["has already been taken"]
+            "nights"=>["must be greater than 0"]
           }
         })
       end
@@ -115,6 +170,40 @@ describe "/api/v1/reservations" do
             "total_paid_amount_accurate": "4300.00"
           }
         }.deep_merge(params)
+      end
+    end
+
+    describe "PUT Update" do
+      it "updates reservation successfully" do
+        reservation = create(
+          :reservation,
+          code: '1111',
+          status: "Accepted",
+          start_date: "2021-03-12",
+          end_date: "2021-03-16",
+          number_of_guests: 7
+        )
+
+        params = {
+          "reservation": {
+            "code": "1111",
+            "start_date": "2021-03-14",
+            "end_date": "2021-03-15",
+            "status_type": "Rejected",
+            "number_of_guests": 4
+          }
+        }
+
+        put(
+          api_v1_reservation_path(params)
+        )
+
+        expect(response.status).to eq(200)
+        expect(json_response["data"]["attributes"]["code"]).to eq("1111")
+        expect(json_response["data"]["attributes"]["start_date"]).to eq("2021-03-14")
+        expect(json_response["data"]["attributes"]["end_date"]).to eq("2021-03-15")
+        expect(json_response["data"]["attributes"]["status"]).to eq("Rejected")
+        expect(json_response["data"]["attributes"]["number_of_guests"]).to eq(4)
       end
     end
   end

@@ -36,7 +36,7 @@ module Payloads
       data["number_of_infants"] = guest_details["number_of_infants"]
       data["number_of_guests"] = reservation_attribute["number_of_guests"]
 
-      data
+      data.compact
     end
 
     def guest_data
@@ -46,7 +46,7 @@ module Payloads
       data["email"] = reservation_attribute["guest_email"]
       data["phone"] = reservation_attribute["guest_phone_numbers"]
 
-      data
+      data.compact
     end
 
     def mapped_column
@@ -60,7 +60,7 @@ module Payloads
     end
 
     def guest_details
-      reservation_attribute["guest_details"]
+      reservation_attribute["guest_details"] || {}
     end
   end
 end

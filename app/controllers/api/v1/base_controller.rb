@@ -1,6 +1,6 @@
 module Api
   module V1
-    class BaseController < ActionController::API
+    class BaseController < ApiController
       def render_serialized_payload(resource)
         render json: serialize_resource(resource), status: 200
       end

@@ -1,24 +1,38 @@
-# README
+## System Requirement
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version 3.0.1
 
-Things you may want to cover:
+* Rails 6.1.4
 
-* Ruby version
+* Postgres 13.2 with Postgis
 
-* System dependencies
+### Rails Setup
 
-* Configuration
+The current required Ruby version is 3.0.1. We recommend you use a Ruby version
+manager to handle parallel installations of different Ruby versions.
+[rbenv](https://github.com/rbenv/rbenv) and [RVM](http://rvm.io) are both
+supported.
 
-* Database creation
+1. Install the bundle:
 
-* Database initialization
+    ```
+    bundle install
+    ```
 
-* How to run the test suite
+2. Create and setup de database
 
-* Services (job queues, cache servers, search engines, etc.)
+    ```
+    bundle exec rake db:setup
+    ```
 
-* Deployment instructions
+### Running in development
 
-* ...
+Once the application has been setup, run the application in development mode:
+
+    bundle exec rails server
+
+### Running the tests
+
+Execute the unit tests through [Rspec](http://rspec.info):
+
+    bundle exec rspec

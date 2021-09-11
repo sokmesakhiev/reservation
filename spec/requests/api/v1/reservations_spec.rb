@@ -9,6 +9,35 @@ describe "/api/v1/reservations" do
         )
 
         expect(response.status).to eq(200)
+        expect(json_response).to eq({
+          "data"=> {
+            "id"=> Reservation.last.id.to_s,
+            "type"=>"reservation",
+            "attributes"=>{
+              "code"=>"YYY12345678",
+              "start_date"=>"2021-04-14",
+              "end_date"=>"2021-04-18",
+              "total_amount"=>4700.0,
+              "payout_amount"=>4200.0,
+              "currency"=>"AUD",
+              "status"=>"accepted",
+              "number_of_nights"=>4,
+              "number_of_adults"=>2,
+              "number_of_children"=>2,
+              "number_of_infants"=>0,
+              "number_of_guests"=>4,
+              "security_price"=>500
+            },
+            "relationships"=>{
+              "guest"=>{
+                "data"=>{
+                  "id"=> Reservation.last.guest.id.to_s,
+                  "type"=>"guest"
+                }
+              }
+            }
+          }
+        })
       end
 
       it "handles invalid payload" do

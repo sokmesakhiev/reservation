@@ -2,7 +2,7 @@ module Api
   module V1
     class ReservationsController < BaseController
       def create
-        parser = ReservationPayloadParser.new(params).parse
+        parser = ReservationPayloadParser.parse(params)
         validator = ReservationPayloadValidator.new(parser)
 
         if validator.valid?
@@ -18,7 +18,7 @@ module Api
       end
 
       def update
-        parser = ReservationPayloadParser.new(params).parse
+        parser = ReservationPayloadParser.parse(params)
         reservation = Reservation.find_by!(code: parser.reservation_data["code"])
         updatable = reservation.update(parser.reservation_data)
 

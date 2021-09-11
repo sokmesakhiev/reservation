@@ -27,7 +27,7 @@ class ReservationPayloadValidator
   end
 
   def guest
-    @guest ||= Guest.new(parser.guest_data)
+    @guest ||= Guest.find_by(parser.guest_data) || Guest.new(parser.guest_data)
   end
 
   def reservation

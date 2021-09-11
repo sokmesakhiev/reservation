@@ -4,7 +4,7 @@
 
 * Rails 6.1.4
 
-* Postgres 13.2 with Postgis
+* Postgres 13.2
 
 ### Rails Setup
 

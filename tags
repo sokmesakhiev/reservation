@@ -1,0 +1,104 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Airbnb	app/parsers/payloads/airbnb.rb	/^  class Airbnb < BasePayload$/;"	c	class:Payloads
+Api	app/controllers/api/api_controller.rb	/^module Api$/;"	m
+Api	app/controllers/api/v1/base_controller.rb	/^module Api$/;"	m
+Api	app/controllers/api/v1/reservations_controller.rb	/^module Api$/;"	m
+ApiController	app/controllers/api/api_controller.rb	/^  class ApiController < ActionController::API$/;"	c	class:Api
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Hometown
+ApplicationCable	app/channels/application_cable/channel.rb	/^module ApplicationCable$/;"	m
+ApplicationCable	app/channels/application_cable/connection.rb	/^module ApplicationCable$/;"	m
+ApplicationJob	app/jobs/application_job.rb	/^class ApplicationJob < ActiveJob::Base$/;"	c
+ApplicationMailer	app/mailers/application_mailer.rb	/^class ApplicationMailer < ActionMailer::Base$/;"	c
+ApplicationRecord	app/models/application_record.rb	/^class ApplicationRecord < ActiveRecord::Base$/;"	c
+ApplicationService	app/services/application_service.rb	/^class ApplicationService$/;"	c
+BaseController	app/controllers/api/v1/base_controller.rb	/^    class BaseController < ApiController$/;"	c	class:Api.V1
+BaseParser	app/parsers/base_parser.rb	/^class BaseParser$/;"	c
+BasePayload	app/parsers/payloads/base_payload.rb	/^  class BasePayload$/;"	c	class:Payloads
+BookingDotCom	app/parsers/payloads/booking_dot_com.rb	/^  class BookingDotCom < BasePayload$/;"	c	class:Payloads
+Channel	app/channels/application_cable/channel.rb	/^  class Channel < ActionCable::Channel::Base$/;"	c	class:ApplicationCable
+Connection	app/channels/application_cable/connection.rb	/^  class Connection < ActionCable::Connection::Base$/;"	c	class:ApplicationCable
+CreateGuest	db/migrate/20210909081823_create_guest.rb	/^class CreateGuest < ActiveRecord::Migration[6.1]$/;"	c
+CreateReservation	db/migrate/20210909081837_create_reservation.rb	/^class CreateReservation < ActiveRecord::Migration[6.1]$/;"	c
+Error	app/parsers/payloads/error.rb	/^  class Error < BasePayload$/;"	c	class:Payloads
+FactoryBot	spec/support/factory_bot.rb	/^module FactoryBot$/;"	m
+Guest	app/models/guest.rb	/^class Guest < ApplicationRecord$/;"	c
+GuestSerializer	app/serializers/guest_serializer.rb	/^class GuestSerializer$/;"	c
+Hometown	config/application.rb	/^module Hometown$/;"	m
+Payloads	app/parsers/payloads/airbnb.rb	/^module Payloads$/;"	m
+Payloads	app/parsers/payloads/base_payload.rb	/^module Payloads$/;"	m
+Payloads	app/parsers/payloads/booking_dot_com.rb	/^module Payloads$/;"	m
+Payloads	app/parsers/payloads/error.rb	/^module Payloads$/;"	m
+RequestHelpers	spec/support/request_helpers.rb	/^module RequestHelpers$/;"	m
+Reservation	app/models/reservation.rb	/^class Reservation < ApplicationRecord$/;"	c
+ReservationCreator	app/services/reservation_creator.rb	/^class ReservationCreator < ApplicationService$/;"	c
+ReservationPayloadParser	app/parsers/reservation_payload_parser.rb	/^class ReservationPayloadParser < BaseParser$/;"	c
+ReservationPayloadValidator	app/validators/reservation_payload_validator.rb	/^class ReservationPayloadValidator$/;"	c
+ReservationSerializer	app/serializers/reservation_serializer.rb	/^class ReservationSerializer$/;"	c
+ReservationsController	app/controllers/api/v1/reservations_controller.rb	/^    class ReservationsController < BaseController$/;"	c	class:Api.V1
+Strategy	spec/support/factory_bot.rb	/^  module Strategy$/;"	m	class:FactoryBot
+Stub	spec/support/factory_bot.rb	/^    class Stub$/;"	c	class:FactoryBot.Strategy
+V1	app/controllers/api/v1/base_controller.rb	/^  module V1$/;"	m	class:Api
+V1	app/controllers/api/v1/reservations_controller.rb	/^  module V1$/;"	m	class:Api
+activate_bundler	bin/bundle	/^  def activate_bundler$/;"	f
+activation_error_handling	bin/bundle	/^  def activation_error_handling$/;"	f
+adapter	app/parsers/reservation_payload_parser.rb	/^  def adapter$/;"	f	class:ReservationPayloadParser
+build_error	app/validators/reservation_payload_validator.rb	/^  def build_error$/;"	f	class:ReservationPayloadValidator
+build_headers	spec/support/request_helpers.rb	/^  def build_headers(user, additional_headers: {})$/;"	f	class:RequestHelpers
+build_params	spec/requests/api/v1/reservations_spec.rb	/^      def build_params(params = {})$/;"	f
+build_params	spec/requests/api/v1/reservations_spec.rb	/^      def build_params(params={})$/;"	f
+bundler_requirement	bin/bundle	/^  def bundler_requirement$/;"	f
+bundler_version	bin/bundle	/^  def bundler_version$/;"	f
+call	app/services/application_service.rb	/^  def self.call(*args)$/;"	F	class:ApplicationService
+call	app/services/reservation_creator.rb	/^  def call$/;"	f	class:ReservationCreator
+change	db/migrate/20210909081823_create_guest.rb	/^  def change$/;"	f	class:CreateGuest
+change	db/migrate/20210909081837_create_reservation.rb	/^  def change$/;"	f	class:CreateReservation
+cli_arg_version	bin/bundle	/^  def cli_arg_version$/;"	f
+create	app/controllers/api/v1/reservations_controller.rb	/^      def create$/;"	f	class:Api.V1.ReservationsController
+env_var_version	bin/bundle	/^  def env_var_version$/;"	f
+errors	app/validators/reservation_payload_validator.rb	/^  def errors$/;"	f	class:ReservationPayloadValidator
+gemfile	bin/bundle	/^  def gemfile$/;"	f
+guest	app/validators/reservation_payload_validator.rb	/^  def guest$/;"	f	class:ReservationPayloadValidator
+guest_attribute	app/parsers/payloads/airbnb.rb	/^    def guest_attribute$/;"	f	class:Payloads.Airbnb
+guest_data	app/parsers/payloads/airbnb.rb	/^    def guest_data$/;"	f	class:Payloads.Airbnb
+guest_data	app/parsers/payloads/booking_dot_com.rb	/^    def guest_data$/;"	f	class:Payloads.BookingDotCom
+guest_data	app/parsers/payloads/error.rb	/^    def guest_data$/;"	f	class:Payloads.Error
+guest_data	app/services/reservation_creator.rb	/^  def guest_data$/;"	f	class:ReservationCreator
+guest_details	app/parsers/payloads/booking_dot_com.rb	/^    def guest_details$/;"	f	class:Payloads.BookingDotCom
+http_basic_auth	spec/support/request_helpers.rb	/^  def http_basic_auth(username, password = "")$/;"	f	class:RequestHelpers
+initialize	app/parsers/base_parser.rb	/^  def initialize(attributes)$/;"	f	class:BaseParser
+initialize	app/parsers/payloads/base_payload.rb	/^    def initialize(attributes)$/;"	f	class:Payloads.BasePayload
+initialize	app/services/application_service.rb	/^  def initialize(attributes)$/;"	f	class:ApplicationService
+initialize	app/validators/reservation_payload_validator.rb	/^  def initialize(parser)$/;"	f	class:ReservationPayloadValidator
+invoked_as_script?	bin/bundle	/^  def invoked_as_script?$/;"	f
+is_airbnb?	app/parsers/reservation_payload_parser.rb	/^  def is_airbnb?$/;"	f	class:ReservationPayloadParser
+is_booking_dot_com?	app/parsers/reservation_payload_parser.rb	/^  def is_booking_dot_com?$/;"	f	class:ReservationPayloadParser
+json_response	spec/support/request_helpers.rb	/^  def json_response$/;"	f	class:RequestHelpers
+load_bundler!	bin/bundle	/^  def load_bundler!$/;"	f
+lockfile	bin/bundle	/^  def lockfile$/;"	f
+lockfile_version	bin/bundle	/^  def lockfile_version$/;"	f
+mapped_column	app/parsers/payloads/airbnb.rb	/^    def mapped_column$/;"	f	class:Payloads.Airbnb
+mapped_column	app/parsers/payloads/booking_dot_com.rb	/^    def mapped_column$/;"	f	class:Payloads.BookingDotCom
+mapped_column	app/parsers/payloads/error.rb	/^    def mapped_column$/;"	f	class:Payloads.Error
+next_id	spec/support/factory_bot.rb	/^      def next_id$/;"	f	class:FactoryBot.Strategy.Stub
+parse	app/parsers/base_parser.rb	/^  def self.parse(*args)$/;"	F	class:BaseParser
+parse	app/parsers/reservation_payload_parser.rb	/^  def parse$/;"	f	class:ReservationPayloadParser
+render_error_payload	app/controllers/api/v1/base_controller.rb	/^      def render_error_payload(error)$/;"	f	class:Api.V1.BaseController
+render_record_not_found_error	app/controllers/api/api_controller.rb	/^    def render_record_not_found_error$/;"	f	class:Api.ApiController
+render_serialized_payload	app/controllers/api/v1/base_controller.rb	/^      def render_serialized_payload(resource)$/;"	f	class:Api.V1.BaseController
+reservation	app/validators/reservation_payload_validator.rb	/^  def reservation$/;"	f	class:ReservationPayloadValidator
+reservation_attribute	app/parsers/payloads/booking_dot_com.rb	/^    def reservation_attribute$/;"	f	class:Payloads.BookingDotCom
+reservation_data	app/parsers/payloads/airbnb.rb	/^    def reservation_data$/;"	f	class:Payloads.Airbnb
+reservation_data	app/parsers/payloads/booking_dot_com.rb	/^    def reservation_data$/;"	f	class:Payloads.BookingDotCom
+reservation_data	app/parsers/payloads/error.rb	/^    def reservation_data$/;"	f	class:Payloads.Error
+reservation_data	app/services/reservation_creator.rb	/^  def reservation_data$/;"	f	class:ReservationCreator
+resource_includes	app/controllers/api/v1/base_controller.rb	/^      def resource_includes$/;"	f	class:Api.V1.BaseController
+resource_serializer	app/controllers/api/v1/reservations_controller.rb	/^      def resource_serializer$/;"	f	class:Api.V1.ReservationsController
+serialize_resource	app/controllers/api/v1/base_controller.rb	/^      def serialize_resource(resource)$/;"	f	class:Api.V1.BaseController
+system!	bin/setup	/^def system!(*args)$/;"	f
+update	app/controllers/api/v1/reservations_controller.rb	/^      def update$/;"	f	class:Api.V1.ReservationsController
+valid?	app/validators/reservation_payload_validator.rb	/^  def valid?$/;"	f	class:ReservationPayloadValidator
